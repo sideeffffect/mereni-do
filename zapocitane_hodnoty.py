@@ -20,17 +20,26 @@ plt.imshow(df2, aspect='auto', origin='lower')
 
 ax = plt.gca()
 
-ticklabelsx = ['']*len(df2.columns)
-ticklabelsx[::30] = [item.strftime('%b %d') for item in df2.columns[::30]]
+import pprint
+
+def datetimeToStr(d):
+  if d.day == 1:
+    return d.strftime('%b')
+  else:
+    ""
+
+import locale
+locale.setlocale(locale.LC_TIME, "cs_CZ.utf8")
+
+ticklabelsx = [datetimeToStr(item) for item in df2.columns]
 
 ax.set_xticks(range(len(ticklabelsx)))
-ax.set_xticklabels(ticklabelsx)
+ax.set_xticklabels(ticklabelsx, rotation = 90)
 
-ax.set_xticks(range(len(ticklabelsx)))
-ax.set_xticklabels(ticklabelsx)
+ticklabelsy = [item.strftime('%H:xx') for item in df2.index]
 
-ax.set_yticks(range(len(df2.index)))
-ax.set_yticklabels(df2.index)
+ax.set_yticks(range(len(ticklabelsy)))
+ax.set_yticklabels(ticklabelsy)
 
 plt.show()
 
