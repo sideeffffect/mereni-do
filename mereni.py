@@ -33,8 +33,51 @@ import seaborn as sns
 
 df2 = df.reset_index().pivot(columns='day',index='hour',values='b')
 
-plt.imshow(df2, aspect='auto')
+
+print(df2)
+
+#fig = plt.figure(figsize=(20, 100))
+#ax1 = fig.add_subplot(131)
+#ax1.set_title("A")
+#ax1.tick_params(axis='both', direction='out')
+#ax1.set_xticks(range(len(df2.columns)))
+#ax1.set_xticklabels(df2.columns)
+#ax1.set_yticks(range(len(df2.index)))
+#ax1.set_yticklabels(df2.index)
+#im1 = ax1.imshow(df2, aspect='auto', origin='lower')
+
+plt.imshow(df2, aspect='auto', origin='lower')
+
+ax = plt.gca()
+
+#import matplotlib.dates as mdates
+#locator = mdates.AutoDateLocator()
+#formatter = mdates.ConciseDateFormatter(locator)
+#ax.xaxis.set_major_locator(locator)
+#ax.xaxis.set_major_formatter(formatter)
+
+#import matplotlib.ticker as ticker
+ticklabels = ['']*len(df2.columns)
+ticklabels[::30] = [item.strftime('%b %d') for item in df2.columns[::30]]
+#ax.xaxis.set_major_formatter(ticker.FixedFormatter(ticklabels))
+
+ax.set_xticks(range(len(ticklabels)))
+ax.set_xticklabels(ticklabels)
+
+
+#ax.set_xticks(range(len(df2.columns)))
+#ax.set_xticklabels(df2.columns, rotation = 90)
+
+#ax.tick_params(axis='y', labelrotation = 45)
+#ax.locator_params(nbins=10, axis='x')
+#plt.xticks(range(len(df2.columns)), df2.columns, rotation = 90)
+#plt.yticks(range(len(y)), y)
+#plt.gcf().autofmt_xdate()
 plt.show()
+
+
+#plt.contour(df2, 2)
+#plt.show()
 
 #sns.heatmap(df)
 
