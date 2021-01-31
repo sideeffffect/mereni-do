@@ -20,13 +20,11 @@ plt.imshow(df2, aspect='auto', origin='lower')
 
 ax = plt.gca()
 
-import pprint
-
 def datetimeToStr(d):
   if d.day == 1:
     return d.strftime('%b')
   else:
-    ""
+    return ""
 
 import locale
 locale.setlocale(locale.LC_TIME, "cs_CZ.utf8")
