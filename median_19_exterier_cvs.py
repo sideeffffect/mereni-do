@@ -1,8 +1,28 @@
 #!/usr/bin/env python3
 
 import pandas
+from datetime import datetime
 
-df = pandas.read_csv('median_19_exterier_cvs.csv', sep=";", index_col=['day', 'hour'], parse_dates=['day', 'hour'], dayfirst=True, decimal=",", usecols=['day', 'hour', 'b'])
+df = pandas.read_csv('median_19_exterier_cvs.csv', sep=";", decimal=",", usecols=['day', 'hour', 'b'])
+
+print(list(df.columns))
+print(df.columns)
+print(df.index)
+print(df.head())
+print(df.size)
+
+
+df['day'] = pandas.to_datetime(df['day'], format='%Y-%b-%d')
+
+def normalizeYear(d):
+  if d.year == 2020:
+    return d.replace(year=2019)
+  else:
+    return d
+
+df['day'] = df['day'].apply(normalizeYear)
+
+df['hour'] = pandas.to_datetime(df['hour'], format='%H:%M:%S')
 
 print(list(df.columns))
 print(df.columns)
