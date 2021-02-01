@@ -16,7 +16,7 @@ df2 = df.reset_index().pivot(columns='day1',index='hour',values='horizon')
 
 print(df2)
 
-plt.imshow(df2, aspect='auto', origin='lower')
+im = plt.imshow(df2, aspect='auto', origin='lower')
 
 ax = plt.gca()
 
@@ -38,6 +38,8 @@ ticklabelsy = [item.strftime('%H:xx') for item in df2.index]
 
 ax.set_yticks(range(len(ticklabelsy)))
 ax.set_yticklabels(ticklabelsy)
+
+plt.colorbar(im)
 
 plt.show()
 

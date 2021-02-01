@@ -56,7 +56,7 @@ print(df2)
 
 fig, ax = plt.subplots()
 
-ax.imshow(df2, aspect='auto', origin='lower')
+im = ax.imshow(df2, aspect='auto', origin='lower')
 
 
 import locale
@@ -100,6 +100,8 @@ ticklabelsy = [timeToStr(item) for item in df2.index]
 
 ax.set_yticks(range(len(ticklabelsy)))
 ax.set_yticklabels(ticklabelsy)
+
+plt.colorbar(im)
 
 plt.show()
 
