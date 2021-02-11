@@ -39,8 +39,8 @@ print(df2)
 fig, ax = plt.subplots()
 
 from matplotlib import colors
-cmap = colors.ListedColormap(['black', 'red', 'green', 'grey', 'purple', 'yellow', 'blue', 'brown', 'pink'])
-bounds=[0, 3000, 5000, 10000, 20000, 40000, 60000, 80000, 100000, 150000]
+cmap = colors.ListedColormap(['dimgray', 'darkgrey', 'lightgray', 'lightsteelblue', 'dodgerblue', 'deepskyblue', 'aliceblue', 'yellow', 'gold', 'orange'])
+bounds=[0, 2000, 5000, 10000, 20000, 40000, 60000, 80000, 100000, 120000, 150000]
 norm = colors.BoundaryNorm(bounds, cmap.N)
 im = ax.pcolor(df2, cmap=cmap, norm=norm)
 
