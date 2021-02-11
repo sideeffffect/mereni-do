@@ -37,12 +37,10 @@ def quantize(n):
     return 10000
   elif n > 5000:
     return 5000
-  elif n > 2500:
-    return 2500
-  elif n > 1000:
-    return 1000
+  elif n > 3000:
+    return 3000
   elif n > 0:
-    return 100
+    return 1000
   else:
     return n
 
@@ -67,7 +65,7 @@ print(df2)
 
 fig, ax = plt.subplots()
 
-im = ax.imshow(df2, aspect='auto', origin='lower', cmap=plt.get_cmap("twilight_shifted"))
+im = ax.imshow(df2, aspect='auto', origin='lower', cmap=plt.get_cmap("coolwarm"))
 
 
 import locale
