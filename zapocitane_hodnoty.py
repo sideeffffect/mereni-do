@@ -16,9 +16,14 @@ df2 = df.reset_index().pivot(columns='day1',index='hour',values='horizon')
 
 print(df2)
 
-im = plt.imshow(df2, aspect='auto', origin='lower')
+fig, ax = plt.subplots()
 
-ax = plt.gca()
+from matplotlib import colors
+cmap = colors.ListedColormap(['black', 'dimgray', 'darkgrey', 'gainsboro', 'lightsteelblue', 'powderblue', 'dodgerblue', 'royalblue', 'deepskyblue', 'cyan', 'yellow', 'orange', 'firebrick'])
+bounds=[0, 1000, 2000, 5000, 10000, 20000, 40000, 50000, 60000, 70000, 80000, 100000, 120000, 150000]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+im = ax.pcolor(df2, cmap=cmap, norm=norm)
+
 
 def datetimeToStr(d):
   if d.day == 1:
