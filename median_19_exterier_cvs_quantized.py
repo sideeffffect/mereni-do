@@ -22,30 +22,6 @@ def normalizeYear(d):
 
 df['day'] = df['day'].apply(normalizeYear)
 
-def quantize(n):
-  if n > 100000:
-    return 100000
-  elif n > 80000:
-    return 80000
-  elif n > 60000:
-    return 60000
-  elif n > 40000:
-    return 40000
-  elif n > 20000:
-    return 20000
-  elif n > 10000:
-    return 10000
-  elif n > 5000:
-    return 5000
-  elif n > 3000:
-    return 3000
-  elif n > 0:
-    return 1000
-  else:
-    return n
-
-df['b'] = df['b'].apply(quantize)
-
 df['hour'] = pandas.to_datetime(df['hour'], format='%H:%M:%S')
 
 print(list(df.columns))
@@ -62,7 +38,11 @@ print(df2)
 
 fig, ax = plt.subplots()
 
-im = ax.imshow(df2, aspect='auto', origin='lower', cmap=plt.get_cmap("coolwarm"))
+from matplotlib import colors
+cmap = colors.ListedColormap(['black', 'red', 'green', 'grey', 'purple', 'yellow', 'blue', 'brown', 'pink'])
+bounds=[0, 3000, 5000, 10000, 20000, 40000, 60000, 80000, 100000, 150000]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+im = ax.pcolor(df2, cmap=cmap, norm=norm)
 
 
 import locale
