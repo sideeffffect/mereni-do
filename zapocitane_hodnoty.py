@@ -32,14 +32,16 @@ locale.setlocale(locale.LC_TIME, "cs_CZ.utf8")
 ticklabelsx = [datetimeToStr(item) for item in df2.columns]
 
 ax.set_xticks(range(len(ticklabelsx)))
-ax.set_xticklabels(ticklabelsx, rotation = 90)
+ax.set_xticklabels(ticklabelsx, rotation = 90, fontsize=20)
 
 ticklabelsy = [item.strftime('%H:xx') for item in df2.index]
 
 ax.set_yticks(range(len(ticklabelsy)))
-ax.set_yticklabels(ticklabelsy)
+ax.set_yticklabels(ticklabelsy, fontsize=20)
 
-plt.colorbar(im)
+cbar = ax.figure.colorbar(im, ax=ax)
+cbar.ax.tick_params(labelsize=20)
+cbar.ax.set_ylabel("lx", rotation=90, fontsize=20)
 
 plt.show()
 

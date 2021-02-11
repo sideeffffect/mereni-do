@@ -23,9 +23,7 @@ def normalizeYear(d):
 df['day'] = df['day'].apply(normalizeYear)
 
 def quantize(n):
-  if n > 100000:
-    return 100000
-  elif n > 80000:
+  if n > 80000:
     return 80000
   elif n > 40000:
     return 40000
@@ -35,12 +33,8 @@ def quantize(n):
     return 10000
   elif n > 5000:
     return 5000
-  elif n > 1000:
+  elif n > 0:
     return 1000
-  elif n > 100:
-    return 100
-  elif n > 10:
-    return 10
   else:
     return n
 
@@ -81,7 +75,7 @@ def dateToStr(d):
 ticklabelsx = [dateToStr(item) for item in df2.columns]
 
 ax.set_xticks(range(len(ticklabelsx)))
-ax.set_xticklabels(ticklabelsx, rotation = 90)
+ax.set_xticklabels(ticklabelsx, rotation = 90, fontsize=20)
 
 
 def timeToStr(d):
@@ -93,9 +87,11 @@ def timeToStr(d):
 ticklabelsy = [timeToStr(item) for item in df2.index]
 
 ax.set_yticks(range(len(ticklabelsy)))
-ax.set_yticklabels(ticklabelsy)
+ax.set_yticklabels(ticklabelsy, fontsize=20)
 
-plt.colorbar(im)
+cbar = ax.figure.colorbar(im, ax=ax)
+cbar.ax.tick_params(labelsize=20)
+cbar.ax.set_ylabel("log_10 lx", rotation=90, fontsize=20)
 
 plt.show()
 
