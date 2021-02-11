@@ -22,6 +22,30 @@ def normalizeYear(d):
 
 df['day'] = df['day'].apply(normalizeYear)
 
+def quantize(n):
+  if n > 100000:
+    return 100000
+  elif n > 80000:
+    return 80000
+  elif n > 40000:
+    return 40000
+  elif n > 20000:
+    return 20000
+  elif n > 10000:
+    return 10000
+  elif n > 5000:
+    return 5000
+  elif n > 1000:
+    return 1000
+  elif n > 100:
+    return 100
+  elif n > 10:
+    return 10
+  else:
+    return n
+
+df['b'] = df['b'].apply(quantize)
+
 import numpy
 df['b'] = numpy.log10(df['b'])
 
