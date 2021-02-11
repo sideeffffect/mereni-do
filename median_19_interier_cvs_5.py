@@ -38,7 +38,11 @@ print(df2)
 
 fig, ax = plt.subplots()
 
-im = ax.imshow(df2, aspect='auto', origin='lower')
+from matplotlib import colors
+cmap = colors.ListedColormap(['dimgray', 'gainsboro', 'dodgerblue', 'yellow', 'firebrick'])
+bounds=[0, 100, 300, 500, 750, 10000]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+im = ax.pcolor(df2, cmap=cmap, norm=norm)
 
 
 import locale
