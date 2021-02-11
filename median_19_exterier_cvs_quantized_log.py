@@ -27,8 +27,8 @@ def quantize(n):
     return 100000
   elif n > 80000:
     return 80000
-  elif n > 50000:
-    return 50000
+  elif n > 60000:
+    return 60000
   elif n > 40000:
     return 40000
   elif n > 20000:
@@ -67,7 +67,7 @@ print(df2)
 
 fig, ax = plt.subplots()
 
-im = ax.imshow(df2, aspect='auto', origin='lower')
+im = ax.imshow(df2, aspect='auto', origin='lower', cmap=plt.get_cmap("twilight_shifted"))
 
 
 import locale
