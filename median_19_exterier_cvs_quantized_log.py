@@ -23,10 +23,22 @@ def normalizeYear(d):
 df['day'] = df['day'].apply(normalizeYear)
 
 def quantize(n):
-  if n > 80000:
+  if n > 110000:
+    return 110000
+  elif n > 100000:
+    return 100000
+  elif n > 90000:
+    return 90000
+  elif n > 80000:
     return 80000
+  elif n > 60000:
+    return 60000
+  elif n > 50000:
+    return 50000
   elif n > 40000:
     return 40000
+  elif n > 30000:
+    return 30000
   elif n > 20000:
     return 20000
   elif n > 10000:
