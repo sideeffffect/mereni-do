@@ -39,7 +39,7 @@ ticklabelsx = [datetimeToStr(item) for item in df2.columns]
 ax.set_xticks(range(len(ticklabelsx)))
 ax.set_xticklabels(ticklabelsx, rotation = 90, fontsize=20)
 
-ticklabelsy = [item.strftime('%H:xx') for item in df2.index]
+ticklabelsy = [item.strftime('%H:00') for item in df2.index]
 
 ax.set_yticks(range(len(ticklabelsy)))
 ax.set_yticklabels(ticklabelsy, fontsize=20)
